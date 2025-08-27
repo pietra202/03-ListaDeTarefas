@@ -1,12 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <View style={styles.container}>
+      <Text styles={styles.toBarTitle}>Minhas tarefas</Text>
+      <TouchableOpacity>
+        <Text>🌖</Text>
+      </TouchableOpacity>
     </View>
+
+    <View>
+    <TextInput
+    style={styles.input}
+    placeholder="Adicionar nova tarefa..."
+    />
+    <TouchableOpacity style={styles.addButton}>
+      <Text style={styles.buttonText}>Adicionar</Text>
+    </TouchableOpacity>
+    </View>
+
+    {/* lista de tarefas do usuario*/}
+
+    <FlatList
+      style={styles.FlatList}
+      ListEmptyComponent={() => (
+      <Text style={styles.emptyListText}>Nenhuma tarefa adicionada adicionada
+      </Text>
+  )}
+  contentContainerStyle={styles.flatListContent}
+  />
+    <StatusBar style="auto" />
+    </View>
+
   );
 }
 
