@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
+import { Ionicons } from "@expo/vector-icons"; // Certifique-se de ter o pacote @expo/vector-icons instalado
 
 export default function App() {
   const [task, setTask] = useState([]);
@@ -110,6 +111,8 @@ export default function App() {
     </View>
   );
 
+  const toggleDarkMode = () => setDarkMode(!darkMode);
+
   return (
     <View
       style={[
@@ -131,10 +134,12 @@ export default function App() {
         >
           Minhas Tarefas
         </Text>
-        <TouchableOpacity onPress={() => setDarkMode(!darkMode)}>
-          <Text style={{ fontSize: 22 }}>
-            {darkMode ? "☀️" : "🌙"}
-          </Text>
+        <TouchableOpacity onPress={toggleDarkMode}>
+          <Ionicons
+            name={darkMode ? "sunny" : "moon"}
+            size={24}
+            color={darkMode ? "#ffd700" : "#333"}
+          />
         </TouchableOpacity>
       </View>
 
